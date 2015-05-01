@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "LogoScene.h"
 
 USING_NS_CC;
 
@@ -16,18 +16,21 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLView::create("My Game");
+        glview = GLView::create("LineUpPro");
         director->setOpenGLView(glview);
     }
 
+//	glview->setDesignResolutionSize(1136,640,ResolutionPolicy::SHOW_ALL);
+//	glview->setFrameSize(1136,640);
+
     // turn on display FPS
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = Logo::createScene();
 
     // run
     director->runWithScene(scene);

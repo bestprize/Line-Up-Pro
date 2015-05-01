@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Start</key>
+	<string>Cliquez sur le démarrage</string>
+	<key>Restart</key>
+	<string>Cliquez sur le redémarrage</string>
+	<key>Grade</key>
+	<string>Niveau</string>
+	<key>YourScore</key>
+	<string>Votre score </string>
+	<key>NewScore</key>
+	<string>Nouveau score!</string>
+	<key>GameOver</key>
+	<string>GAME OVER</string>
+	<key>Best</key>
+	<string>BEST </string>
+</dict>
+</plist>
