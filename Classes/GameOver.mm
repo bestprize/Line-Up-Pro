@@ -3,6 +3,8 @@
 #include "IndexScene.h"
 #include "extern.h"
 #include "GetCurrLanguage.h"
+#include "PlayMusic.h"
+#include "GameKitHelper.h"
 
 #include <iostream>
 #include <cmath>
@@ -20,6 +22,7 @@ bool GameOver::init(){
 			return false;
 		}
 
+    
 		isNewScene = true;
 		picSpeedMin = 0;
 
@@ -48,9 +51,12 @@ bool GameOver::init(){
 
 
 		if(score > scoreTop){
+            if(UserDefault::sharedUserDefault()->getIntegerForKey("EffectMusic",1) == 1){
+                PlayMusic::playBreakRecord();
+            }
 			auto scoreStr = String::createWithFormat("%d",score);
 			string scorestr = scoreStr->_string;
-			auto labelNewScoreTip = LabelTTF::create(vm["NewScore"].asString().c_str()+scorestr, "Eras Bold ITC", 28);
+			auto labelNewScoreTip = LabelTTF::create(vm["NewRecord"].asString().c_str()+scorestr, "Eras Bold ITC", 28);
 			this->addChild(labelNewScoreTip);
 			labelNewScoreTip->setPosition(Vec2(visibleSize.width+200,visibleSize.height/2 - 20));
 			ActionInterval* moveActionScore = MoveTo::create(0.2,ccp(visibleSize.width/2,visibleSize.height/2 - 20));
@@ -65,6 +71,7 @@ bool GameOver::init(){
 			this->addChild(emitter, 0, 1);  
 
 			setTopScore(score);
+            reportScore(score);
 
 		}else{
 			auto scoreStr = String::createWithFormat("%d",score);
@@ -83,11 +90,11 @@ bool GameOver::init(){
 
 
     auto returnItem = MenuItemImage::create(
-                                           "return-64.png",
-                                           "return-64.png",
+                                           "return-96.png",
+                                           "return-96.png",
                                            CC_CALLBACK_1(GameOver::backToIndex, this));
     
-	returnItem->setPosition(Vec2(64,64));
+	returnItem->setPosition(Vec2(96,96));
 
     auto returnMenu = Menu::create(returnItem, NULL);
     returnMenu->setPosition(Vec2::ZERO);
@@ -119,7 +126,6 @@ bool GameOver::init(){
 void GameOver::backToIndex(Ref* pSender)  
 {
     
-	log("-------------------------------------------------start main--------------------------------------");
     auto *index = Index::createScene();
     //float t = 3.0f;
 
@@ -129,7 +135,7 @@ void GameOver::backToIndex(Ref* pSender)
 
 int GameOver::getTopScore()  
 {
-	auto grade = UserDefault::sharedUserDefault()->getIntegerForKey("grade",0);
+	auto grade = UserDefault::sharedUserDefault()->getIntegerForKey("grade",2);
 	if(grade == 2){
 		return UserDefault::sharedUserDefault()->getIntegerForKey("score2",0);
 	}else if(grade == 3){
@@ -175,6 +181,30 @@ void GameOver::setTopScore(int score)
 		UserDefault::sharedUserDefault()->setIntegerForKey("score10",score);
 	}
 	
+}
+
+void GameOver::reportScore(int score)
+{
+    auto grade = UserDefault::sharedUserDefault()->getIntegerForKey("grade",2);
+    if(grade == 2){
+        [[GameKitHelper sharedGameKitHelper] reportScore:score forCategory:@"grp.lineupleadboard02"];
+    }else if(grade == 3){
+        [[GameKitHelper sharedGameKitHelper] reportScore:score forCategory:@"grp.lineupleadboard03"];
+    }else if(grade == 4){
+        [[GameKitHelper sharedGameKitHelper] reportScore:score forCategory:@"grp.lineupleadboard04"];
+    }else if(grade == 5){
+        [[GameKitHelper sharedGameKitHelper] reportScore:score forCategory:@"grp.lineupleadboard05"];
+    }else if(grade == 6){
+        [[GameKitHelper sharedGameKitHelper] reportScore:score forCategory:@"grp.lineupleadboard06"];
+    }else if(grade == 7){
+        [[GameKitHelper sharedGameKitHelper] reportScore:score forCategory:@"grp.lineupleadboard07"];
+    }else if(grade == 8){
+        [[GameKitHelper sharedGameKitHelper] reportScore:score forCategory:@"grp.lineupleadboard08"];
+    }else if(grade == 9){
+        [[GameKitHelper sharedGameKitHelper] reportScore:score forCategory:@"grp.lineupleadboard09"];
+    }else if(grade == 10){
+        [[GameKitHelper sharedGameKitHelper] reportScore:score forCategory:@"grp.lineupleadboard10"];
+    }
 }
 
 

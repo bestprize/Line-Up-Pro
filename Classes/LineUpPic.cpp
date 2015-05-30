@@ -46,10 +46,10 @@ void LineUpPic::enemyInit(float picSizeWidth,float picSizeHeight,int picRotateSt
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	
-	int picNumberMax = 24;
+	int picNumberMax = 25;
 	if(isNewScene){
 		srand(int(time(0))+ rand());
-		randPic = rand()%(picNumberMax+1);
+		randPic = rand()%(picNumberMax);
 		isNewScene = false;
 	}
 	auto picStr = String::createWithFormat("%d",randPic);

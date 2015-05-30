@@ -45,6 +45,11 @@ private:
 	void gradeButton10(CCObject * obj);
 
 	void blank(CCObject * obj);
+    
+    CCMenuItemImage *gradeCheckBoxMusic;
+    CCMenuItemImage *gradeCheckBoxEffect;
+    void music(CCObject * obj);
+    void effect(CCObject * obj);
 
 
 };

@@ -17,6 +17,10 @@ public:
      // a selector callback
     void startMain(Ref* pSender);
     void setup(Ref* pSender);
+    void purchase(Ref* pSender);
+    void purchaseBoom(Ref* pSender);
+    void showLeaderboard(Ref* pSender);
+    void love(Ref* pSender);
     
     // implement the "static create()" method manually
     CREATE_FUNC(Index);

@@ -1,20 +1,44 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>Start</key>
 	<string>TAP TO START</string>
-	<key>Restart</key>
-	<string>TAP TO RESTART</string>
-	<key>Grade</key>
-	<string>GRADE</string>
-	<key>YourScore</key>
-	<string>YOUR SCORE   </string>
-	<key>NewScore</key>
-	<string>NEW SCORE   </string>
 	<key>GameOver</key>
 	<string>GAME OVER</string>
 	<key>Best</key>
 	<string>BEST   </string>
+	<key>YourScore</key>
+	<string>YOUR SCORE   </string>
+	<key>NewRecord</key>
+	<string>NEW RECORD   </string>
+	<key>Restart</key>
+	<string>TAP TO RESTART</string>
+	<key>Grade</key>
+	<string>GRADE</string>
+	<key>Music</key>
+	<string>MUSIC</string>
+	<key>Sound</key>
+	<string>SOUND</string>
+	<key>YouHaveCoins</key>
+	<string>YOU HAVE COINS   </string>
+	<key>Coins</key>
+	<string>COINS</string>
+	<key>Purchase</key>
+	<string>PURCHASE</string>
+	<key>Take5CoinsFor5Bombs</key>
+	<string>TAKE 5 COINS FOR 5 BOMBS?</string>
+	<key>Take1CoinFor1Bomb</key>
+	<string>TAKE 1 COIN FOR 1 BOMB?</string>
+	<key>YouHave</key>
+	<string>YOU HAVE </string>
+	<key>BombsNow</key>
+	<string> BOMBS NOW</string>
+	<key>YouHaveNoCoinsToTakeBombs</key>
+	<string>YOU HAVE NO COINS TO TAKE BOMBS</string>
+	<key>Take50CoinsToUnlockThisGrade</key>
+	<string>TAKE 50 COINS TO UNLOCK THIS GRADE</string>
+	<key>Success</key>
+	<string>SUCCEESS</string>
 </dict>
 </plist>

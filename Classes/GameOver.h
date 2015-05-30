@@ -13,7 +13,7 @@ USING_NS_CC;
 class GameOver:public LayerColor {
     
 private:
-    Size visibleSize;
+    cocos2d::Size visibleSize;
     
 public:
 
@@ -22,5 +22,6 @@ public:
 	void backToIndex(Ref* pSender);
  	int getTopScore();
   	void setTopScore(int score);
+    void reportScore(int score);
   
 };

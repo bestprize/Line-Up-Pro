@@ -7,6 +7,9 @@
 #include "BAWaterEffect.h"
 #include "CCShake.h"
 #include "MainBackGroundLayer.h"
+#include "PlayMusic.h"
+#include "AppController.h"
+
  
 float picSpeedMin;
 
@@ -25,6 +28,15 @@ bool MainLineUpLayer::init(){
 		//级别：2-10~~~~~~~~~~~
 		grade = UserDefault::sharedUserDefault()->getIntegerForKey("grade",2);
 
+        if(UserDefault::sharedUserDefault()->getIntegerForKey("BkMusic",1) == 1
+           || UserDefault::sharedUserDefault()->getIntegerForKey("EffectMusic",1) == 1){
+            PlayMusic::loadMusic();
+        }
+    
+        if(UserDefault::sharedUserDefault()->getIntegerForKey("BkMusic",1) == 1){
+            PlayMusic::playMainBk();
+        }
+    
 		//出现方向、移动方向：上为0、下为1~~~~~~~~~~~
 		srand(int(time(0))+ rand());
 		directionStyle = rand()%2;
@@ -745,7 +757,7 @@ bool MainLineUpLayer::init(){
 			CCMenuItemFont::setFontSize(16); 
 			CCMenuItemFont *moreBombItem =CCMenuItemFont::create(""+String::createWithFormat("%d",bombNumber)->_string+"",this,menu_selector(MainLineUpLayer::bombCallback));
 			moreBombItem->setColor(Color3B(150,150,150));
-			moreBombItem->setAnchorPoint(Point::ANCHOR_MIDDLE_BOTTOM);
+			moreBombItem->setAnchorPoint(cocos2d::Point::ANCHOR_MIDDLE_BOTTOM);
 			bombMenu = CCMenu::create(bombItem1,bombItem2,bombItem3,moreBombItem,NULL);
 		}
 		bombMenu->alignItemsHorizontallyWithPadding(0);
@@ -769,6 +781,9 @@ bool MainLineUpLayer::init(){
 		this->addChild(emitter, 0, 1);  
 
 
+        if(UserDefault::sharedUserDefault()->getIntegerForKey("EffectMusic",1) == 1){
+            PlayMusic::playTouch();
+        }
 
 
 		//playWaterEffect(t->getLocation());
@@ -781,43 +796,43 @@ bool MainLineUpLayer::init(){
 		//fingerPrint->runAction(Sequence::create(fingerPrintFadeOutAction,NULL));
 
 
-		Rect rectTouch1;
+		cocos2d::Rect rectTouch1;
 		if(grade >= 1){
 			rectTouch1 = CCRectMake(0, 0, visibleSize.width/grade, visibleSize.height);
 		}
-		Rect rectTouch2;
+		cocos2d::Rect rectTouch2;
 		if(grade >= 2){
 			rectTouch2 = CCRectMake(visibleSize.width/grade, 0, visibleSize.width/grade, visibleSize.height);
 		}
-		Rect rectTouch3;
+		cocos2d::Rect rectTouch3;
 		if(grade >= 3){
 			rectTouch3 = CCRectMake(2*visibleSize.width/grade, 0, visibleSize.width/grade, visibleSize.height);
 		}
-		Rect rectTouch4;
+		cocos2d::Rect rectTouch4;
 		if(grade >= 4){
 			rectTouch4 = CCRectMake(3*visibleSize.width/grade, 0, visibleSize.width/grade, visibleSize.height);
 		}
-		Rect rectTouch5;
+		cocos2d::Rect rectTouch5;
 		if(grade >= 5){
 			rectTouch5 = CCRectMake(4*visibleSize.width/grade, 0, visibleSize.width/grade, visibleSize.height);
 		}
-		Rect rectTouch6;
+		cocos2d::Rect rectTouch6;
 		if(grade >= 6){
 			rectTouch6 = CCRectMake(5*visibleSize.width/grade, 0, visibleSize.width/grade, visibleSize.height);
 		}
-		Rect rectTouch7;
+		cocos2d::Rect rectTouch7;
 		if(grade >= 7){
 			rectTouch7 = CCRectMake(6*visibleSize.width/grade, 0, visibleSize.width/grade, visibleSize.height);
 		}
-		Rect rectTouch8;
+		cocos2d::Rect rectTouch8;
 		if(grade >= 8){
 			rectTouch8 = CCRectMake(7*visibleSize.width/grade, 0, visibleSize.width/grade, visibleSize.height);
 		}
-		Rect rectTouch9;
+		cocos2d::Rect rectTouch9;
 		if(grade >= 9){
 			rectTouch9 = CCRectMake(8*visibleSize.width/grade, 0, visibleSize.width/grade, visibleSize.height);
 		}
-		Rect rectTouch10;
+		cocos2d::Rect rectTouch10;
 		if(grade >= 10){
 			rectTouch10 = CCRectMake(9*visibleSize.width/grade, 0, visibleSize.width/grade, visibleSize.height);
 		}
@@ -1393,6 +1408,9 @@ void MainLineUpLayer::moveRightSprite10(int direction){
 
 
 void MainLineUpLayer::changeToNewScene(){
+        if(UserDefault::sharedUserDefault()->getIntegerForKey("EffectMusic",1) == 1){
+            PlayMusic::playSuccess();
+        }
 		DelayTime* delayChange = DelayTime::create(0.5f);
 		CallFunc* beginChange = CallFunc::create(this,callfunc_selector(MainLineUpLayer::mainScene));
 		FiniteTimeAction* sequence=CCSequence::create(delayChange,beginChange,NULL);
@@ -1406,7 +1424,15 @@ void MainLineUpLayer::createGameOverLayer(){
 }
 
 void MainLineUpLayer::gameOver(){
+    
+        [(AppController*)[UIApplication sharedApplication].delegate showInterstitial];
+    
+        Director::getInstance()->getEventDispatcher()->removeAllEventListeners();
+    
 		unscheduleAllSelectors();
+        if(UserDefault::sharedUserDefault()->getIntegerForKey("EffectMusic",1) == 1){
+            PlayMusic::playFailure();
+        }
 		this->runAction(Shake::create(0.1f,10));
 		DelayTime* delayChange = DelayTime::create(0.5f);
 		CallFunc* gameOver = CallFunc::create(this,callfunc_selector(MainLineUpLayer::createGameOverLayer));
@@ -1568,8 +1594,8 @@ float MainLineUpLayer::decideSpeed(int choice)
 
 void MainLineUpLayer::pauseButton(){
 	auto pauseButtonItem = MenuItemImage::create(
-                                           "pause-64.png",
-                                           "pause-64.png",
+                                           "pause-96.png",
+                                           "pause-96.png",
                                            CC_CALLBACK_1(MainLineUpLayer::pressPauseButton, this));
     
 	pauseButtonItem->setPosition(Vec2(visibleSize.width - pauseButtonItem->getContentSize().width ,
@@ -1583,8 +1609,8 @@ void MainLineUpLayer::pauseButton(){
 
 void MainLineUpLayer::restartButton(){
 	auto restartButtonItem = MenuItemImage::create(
-                                           "restart-64.png",
-                                           "restart-64.png",
+                                           "restart-96.png",
+                                           "restart-96.png",
                                            CC_CALLBACK_1(MainLineUpLayer::pressRestartButton, this));
     
 	restartButtonItem->setPosition(Vec2(visibleSize.width - restartButtonItem->getContentSize().width ,
@@ -1598,6 +1624,7 @@ void MainLineUpLayer::restartButton(){
 
 
 void MainLineUpLayer::pressPauseButton(Ref* pSender){
+    PlayMusic::pauseMusic();
 	pauseSchedulerAndActions();
 	pauseButtonMenu->removeFromParentAndCleanup(true);
 	restartButton();
@@ -1605,8 +1632,12 @@ void MainLineUpLayer::pressPauseButton(Ref* pSender){
 
 
 void MainLineUpLayer::pressRestartButton(Ref* pSender){
+    if(UserDefault::sharedUserDefault()->getIntegerForKey("BkMusic",1) == 1){
+        PlayMusic::resumeMusic();
+    }
 	resumeSchedulerAndActions();
 	restartButtonMenu->removeFromParentAndCleanup(true);
 	pauseButton();
 
 }
+

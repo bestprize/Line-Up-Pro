@@ -9,21 +9,21 @@ const char * GetCurrLanguage::getCurrLanguage(){
 	if(kLanguageEnglish == languageType){
 		return "languages/english.plist";
 	}else if(kLanguageChinese == languageType){
-		return "languages/english.plist";
+		return "languages/chinese.plist";
 	}else if(kLanguageFrench == languageType){
 		return "languages/french.plist";
 	}else if(kLanguageItalian == languageType){
 		return "languages/english.plist";
 	}else if(kLanguageGerman == languageType){
-		return "languages/english.plist";
+		return "languages/german.plist";
 	}else if(kLanguageSpanish == languageType){
 		return "languages/english.plist";
 	}else if(kLanguageRussian == languageType){
-		return "languages/english.plist";
+		return "languages/russian.plist";
 	}else if(kLanguageKorean == languageType){
-		return "languages/english.plist";
+		return "languages/korean.plist";
 	}else if(kLanguageJapanese == languageType){
-		return "languages/english.plist";
+		return "languages/japanese.plist";
 	}else if(kLanguageHungarian == languageType){
 		return "languages/english.plist";
 	}else if(kLanguagePortuguese == languageType){

@@ -1,6 +1,7 @@
 #include "SetupScene.h"
 #include "IndexScene.h"
 #include "GetCurrLanguage.h"
+#include "PopLayerM.h"
 
 #include <iostream>
 #include <cmath>
@@ -39,21 +40,27 @@ bool Setup::init()
     {
         return false;
     }
+
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    ParticleSystemQuad *emitter = ParticleSystemQuad::create("IndexBackground.plist");
+    srand(int(time(0))+ rand());
+    emitter->setPosition(ccp(rand()%int(visibleSize.width),rand()%int(visibleSize.height)));
+    emitter->setAutoRemoveOnFinish(true);
+    this->addChild(emitter, 0, 1);
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
 	FileUtils *fu = FileUtils::getInstance();
 	ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
 	
 
-	auto gradeLabel = LabelTTF::create(vm["Grade"].asString().c_str(), "Eras Bold ITC", 48);
-    gradeLabel->setPosition(visibleSize.width/2, visibleSize.height-100);
+	auto gradeLabel = LabelTTF::create(vm["Grade"].asString().c_str(), "Eras Bold ITC", 36);
+    gradeLabel->setPosition(visibleSize.width/2, visibleSize.height-200);
     this->addChild(gradeLabel, 1);
 
 
 	CCMenuItemFont::setFontName("Eras Bold ITC"); 
-	CCMenuItemFont::setFontSize(48); 
+	CCMenuItemFont::setFontSize(36);
 	CCMenuItemFont *itemfont2=CCMenuItemFont::create(" 2",this,menu_selector(Setup::blank));
 	CCMenuItemFont *itemfont3=CCMenuItemFont::create(" 3",this,menu_selector(Setup::blank));
 	CCMenuItemFont *itemfont4=CCMenuItemFont::create(" 4",this,menu_selector(Setup::blank));
@@ -76,7 +83,7 @@ bool Setup::init()
 	gradeCheckBox10 = CCMenuItemImage::create("off-48.png","on-48.png",this,menu_selector(Setup::gradeButton10));
 	CCMenu * gradeMenu = CCMenu::create(itemfont2,gradeCheckBox2,itemfont3,gradeCheckBox3,itemfont4,gradeCheckBox4,itemfont5,gradeCheckBox5,itemfont6,gradeCheckBox6,itemfont7,gradeCheckBox7,itemfont8,gradeCheckBox8,itemfont9,gradeCheckBox9,itemfont10,gradeCheckBox10,NULL);
 	gradeMenu->alignItemsHorizontallyWithPadding(7);
-	gradeMenu->setPosition(ccp(visibleSize.width/2+19,visibleSize.height-169));
+	gradeMenu->setPosition(ccp(visibleSize.width/2,visibleSize.height-269));
 	int grade = UserDefault::sharedUserDefault()->getIntegerForKey("grade",2);
 	if(grade==2){gradeCheckBox2->selected();}
 	if(grade==3){gradeCheckBox3->selected();}
@@ -90,12 +97,33 @@ bool Setup::init()
 	this->addChild(gradeMenu);
 
 
+    CCMenuItemFont *itemfontMusic=CCMenuItemFont::create(vm["Music"].asString().c_str(),this,menu_selector(Setup::blank));
+    gradeCheckBoxMusic = CCMenuItemImage::create("off-48.png","on-48.png",this,menu_selector(Setup::music));
+    CCMenu * musicMenu = CCMenu::create(itemfontMusic,gradeCheckBoxMusic,NULL);
+    musicMenu->alignItemsHorizontallyWithPadding(10);
+    musicMenu->setPosition(ccp(visibleSize.width/2,visibleSize.height-369));
+    if(UserDefault::sharedUserDefault()->getIntegerForKey("BkMusic",1) == 1){
+        gradeCheckBoxMusic->selected();
+    } else {gradeCheckBoxMusic->unselected();}
+    this->addChild(musicMenu);
+    
+    CCMenuItemFont *itemfontEffect=CCMenuItemFont::create(vm["Sound"].asString().c_str(),this,menu_selector(Setup::blank));
+    gradeCheckBoxEffect = CCMenuItemImage::create("off-48.png","on-48.png",this,menu_selector(Setup::effect));
+    CCMenu * effectMenu = CCMenu::create(itemfontEffect,gradeCheckBoxEffect,NULL);
+    effectMenu->alignItemsHorizontallyWithPadding(10);
+    effectMenu->setPosition(ccp(visibleSize.width/2,visibleSize.height-469));
+    if(UserDefault::sharedUserDefault()->getIntegerForKey("EffectMusic",1) == 1){
+        gradeCheckBoxEffect->selected();
+    } else {gradeCheckBoxEffect->unselected();}
+    this->addChild(effectMenu);
+    
+    
     auto returnItem = MenuItemImage::create(
-                                           "return-64.png",
-                                           "return-64.png",
+                                           "return-96.png",
+                                           "return-96.png",
                                            CC_CALLBACK_1(Setup::backToIndex, this));
     
-	returnItem->setPosition(Vec2(64,64));
+	returnItem->setPosition(Vec2(96,96));
 
     auto returnMenu = Menu::create(returnItem, NULL);
     returnMenu->setPosition(Vec2::ZERO);
@@ -155,86 +183,182 @@ void Setup::gradeButton4(CCObject * obj)
 
 void Setup::gradeButton5(CCObject * obj)
 {
-	gradeCheckBox5->selected();
-	gradeCheckBox2->unselected();
-	gradeCheckBox4->unselected();
-	gradeCheckBox3->unselected();
-	gradeCheckBox6->unselected();
-	gradeCheckBox7->unselected();
-	gradeCheckBox8->unselected();
-	gradeCheckBox9->unselected();
-	gradeCheckBox10->unselected();
-	UserDefault::sharedUserDefault()->setIntegerForKey("grade",5);
+    auto gradeOnOff5 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff5",0);
+    if(gradeOnOff5 == 1){
+        gradeCheckBox5->selected();
+        gradeCheckBox2->unselected();
+        gradeCheckBox4->unselected();
+        gradeCheckBox3->unselected();
+        gradeCheckBox6->unselected();
+        gradeCheckBox7->unselected();
+        gradeCheckBox8->unselected();
+        gradeCheckBox9->unselected();
+        gradeCheckBox10->unselected();
+        UserDefault::sharedUserDefault()->setIntegerForKey("grade",5);
+    } else if(gradeOnOff5 == 0){
+        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
+        FileUtils *fu = FileUtils::getInstance();
+        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
+        
+        int wealthDedu;
+        wealthDedu = 50;
+        auto pop = PopM::create();
+        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
+        pop->setContentMLink();
+        pop->setMenuM(wealthDedu,"UnlockGrade05");
+        addChild(pop,10,"pop");
+        
+    }
 }
 
 void Setup::gradeButton6(CCObject * obj)
 {
-	gradeCheckBox6->selected();
-	gradeCheckBox2->unselected();
-	gradeCheckBox4->unselected();
-	gradeCheckBox5->unselected();
-	gradeCheckBox3->unselected();
-	gradeCheckBox7->unselected();
-	gradeCheckBox8->unselected();
-	gradeCheckBox9->unselected();
-	gradeCheckBox10->unselected();
-	UserDefault::sharedUserDefault()->setIntegerForKey("grade",6);
+    auto gradeOnOff6 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff6",0);
+    if(gradeOnOff6 == 1){
+        gradeCheckBox6->selected();
+        gradeCheckBox2->unselected();
+        gradeCheckBox4->unselected();
+        gradeCheckBox5->unselected();
+        gradeCheckBox3->unselected();
+        gradeCheckBox7->unselected();
+        gradeCheckBox8->unselected();
+        gradeCheckBox9->unselected();
+        gradeCheckBox10->unselected();
+        UserDefault::sharedUserDefault()->setIntegerForKey("grade",6);
+    } else if(gradeOnOff6 == 0){
+        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
+        FileUtils *fu = FileUtils::getInstance();
+        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
+        
+        int wealthDedu;
+        wealthDedu = 50;
+        auto pop = PopM::create();
+        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
+        pop->setContentMLink();
+        pop->setMenuM(wealthDedu,"UnlockGrade06");
+        addChild(pop,10,"pop");
+        
+    }
 }
 
 void Setup::gradeButton7(CCObject * obj)
 {
-	gradeCheckBox7->selected();
-	gradeCheckBox2->unselected();
-	gradeCheckBox4->unselected();
-	gradeCheckBox5->unselected();
-	gradeCheckBox6->unselected();
-	gradeCheckBox3->unselected();
-	gradeCheckBox8->unselected();
-	gradeCheckBox9->unselected();
-	gradeCheckBox10->unselected();
-	UserDefault::sharedUserDefault()->setIntegerForKey("grade",7);
+    auto gradeOnOff7 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff7",0);
+    if(gradeOnOff7 == 1){
+        gradeCheckBox7->selected();
+        gradeCheckBox2->unselected();
+        gradeCheckBox4->unselected();
+        gradeCheckBox5->unselected();
+        gradeCheckBox6->unselected();
+        gradeCheckBox3->unselected();
+        gradeCheckBox8->unselected();
+        gradeCheckBox9->unselected();
+        gradeCheckBox10->unselected();
+        UserDefault::sharedUserDefault()->setIntegerForKey("grade",7);
+    } else if(gradeOnOff7 == 0){
+        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
+        FileUtils *fu = FileUtils::getInstance();
+        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
+        
+        int wealthDedu;
+        wealthDedu = 50;
+        auto pop = PopM::create();
+        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
+        pop->setContentMLink();
+        pop->setMenuM(wealthDedu,"UnlockGrade07");
+        addChild(pop,10,"pop");
+        
+    }
 }
 
 void Setup::gradeButton8(CCObject * obj)
 {
-	gradeCheckBox8->selected();
-	gradeCheckBox2->unselected();
-	gradeCheckBox4->unselected();
-	gradeCheckBox5->unselected();
-	gradeCheckBox6->unselected();
-	gradeCheckBox7->unselected();
-	gradeCheckBox3->unselected();
-	gradeCheckBox9->unselected();
-	gradeCheckBox10->unselected();
-	UserDefault::sharedUserDefault()->setIntegerForKey("grade",8);
+    auto gradeOnOff8 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff8",0);
+    if(gradeOnOff8 == 1){
+        gradeCheckBox8->selected();
+        gradeCheckBox2->unselected();
+        gradeCheckBox4->unselected();
+        gradeCheckBox5->unselected();
+        gradeCheckBox6->unselected();
+        gradeCheckBox7->unselected();
+        gradeCheckBox3->unselected();
+        gradeCheckBox9->unselected();
+        gradeCheckBox10->unselected();
+        UserDefault::sharedUserDefault()->setIntegerForKey("grade",8);
+    } else if(gradeOnOff8 == 0){
+        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
+        FileUtils *fu = FileUtils::getInstance();
+        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
+        
+        int wealthDedu;
+        wealthDedu = 50;
+        auto pop = PopM::create();
+        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
+        pop->setContentMLink();
+        pop->setMenuM(wealthDedu,"UnlockGrade08");
+        addChild(pop,10,"pop");
+        
+    }
 }
 
 void Setup::gradeButton9(CCObject * obj)
 {
-	gradeCheckBox9->selected();
-	gradeCheckBox2->unselected();
-	gradeCheckBox4->unselected();
-	gradeCheckBox5->unselected();
-	gradeCheckBox6->unselected();
-	gradeCheckBox7->unselected();
-	gradeCheckBox8->unselected();
-	gradeCheckBox3->unselected();
-	gradeCheckBox10->unselected();
-	UserDefault::sharedUserDefault()->setIntegerForKey("grade",9);
+    auto gradeOnOff9 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff9",0);
+    if(gradeOnOff9 == 1){
+        gradeCheckBox9->selected();
+        gradeCheckBox2->unselected();
+        gradeCheckBox4->unselected();
+        gradeCheckBox5->unselected();
+        gradeCheckBox6->unselected();
+        gradeCheckBox7->unselected();
+        gradeCheckBox8->unselected();
+        gradeCheckBox3->unselected();
+        gradeCheckBox10->unselected();
+        UserDefault::sharedUserDefault()->setIntegerForKey("grade",9);
+    } else if(gradeOnOff9 == 0){
+        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
+        FileUtils *fu = FileUtils::getInstance();
+        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
+        
+        int wealthDedu;
+        wealthDedu = 50;
+        auto pop = PopM::create();
+        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
+        pop->setContentMLink();
+        pop->setMenuM(wealthDedu,"UnlockGrade09");
+        addChild(pop,10,"pop");
+        
+    }
 }
 
 void Setup::gradeButton10(CCObject * obj)
 {
-	gradeCheckBox10->selected();
-	gradeCheckBox2->unselected();
-	gradeCheckBox4->unselected();
-	gradeCheckBox5->unselected();
-	gradeCheckBox6->unselected();
-	gradeCheckBox7->unselected();
-	gradeCheckBox8->unselected();
-	gradeCheckBox9->unselected();
-	gradeCheckBox3->unselected();
-	UserDefault::sharedUserDefault()->setIntegerForKey("grade",10);
+    auto gradeOnOff10 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff10",0);
+    if(gradeOnOff10 == 1){
+        gradeCheckBox10->selected();
+        gradeCheckBox2->unselected();
+        gradeCheckBox4->unselected();
+        gradeCheckBox5->unselected();
+        gradeCheckBox6->unselected();
+        gradeCheckBox7->unselected();
+        gradeCheckBox8->unselected();
+        gradeCheckBox9->unselected();
+        gradeCheckBox3->unselected();
+        UserDefault::sharedUserDefault()->setIntegerForKey("grade",10);
+    } else if(gradeOnOff10 == 0){
+        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
+        FileUtils *fu = FileUtils::getInstance();
+        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
+        
+        int wealthDedu;
+        wealthDedu = 50;
+        auto pop = PopM::create();
+        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
+        pop->setContentMLink();
+        pop->setMenuM(wealthDedu,"UnlockGrade10");
+        addChild(pop,10,"pop");
+        
+    }
 }
 
 void Setup::backToIndex(Ref* pSender)  
@@ -250,5 +374,28 @@ void Setup::backToIndex(Ref* pSender)
 void Setup::blank(CCObject * obj)
 {
 }
+
+void Setup::music(CCObject * obj)
+{
+    if(UserDefault::sharedUserDefault()->getIntegerForKey("BkMusic",1) == 1){
+        gradeCheckBoxMusic->unselected();
+        UserDefault::sharedUserDefault()->setIntegerForKey("BkMusic",0);
+    } else if(UserDefault::sharedUserDefault()->getIntegerForKey("BkMusic",1) != 1){
+        gradeCheckBoxMusic->selected();
+        UserDefault::sharedUserDefault()->setIntegerForKey("BkMusic",1);
+    }
+}
+
+void Setup::effect(CCObject * obj)
+{
+    if(UserDefault::sharedUserDefault()->getIntegerForKey("EffectMusic",1) == 1){
+        gradeCheckBoxEffect->unselected();
+        UserDefault::sharedUserDefault()->setIntegerForKey("EffectMusic",0);
+    } else if(UserDefault::sharedUserDefault()->getIntegerForKey("EffectMusic",1) != 1){
+        gradeCheckBoxEffect->selected();
+        UserDefault::sharedUserDefault()->setIntegerForKey("EffectMusic",1);
+    }
+}
+
 
 

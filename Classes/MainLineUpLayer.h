@@ -87,6 +87,8 @@ private:
 
 		cocos2d::Menu *pauseButtonMenu;
 		cocos2d::Menu *restartButtonMenu;
+    
+
 };
 
 #endif // __MAIN_LINE_UP_LAYER
