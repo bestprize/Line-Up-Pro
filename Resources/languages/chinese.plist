@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Start</key>
+	<string>点击开始</string>
+	<key>GameOver</key>
+	<string>游戏结束</string>
+	<key>Best</key>
+	<string>最好成绩   </string>
+	<key>YourScore</key>
+	<string>你的分数   </string>
+	<key>NewRecord</key>
+	<string>新纪录   </string>
+	<key>Restart</key>
+	<string>点击重新开始</string>
+	<key>Grade</key>
+	<string>级别</string>
+	<key>Music</key>
+	<string>背景音乐</string>
+	<key>Sound</key>
+	<string>音效</string>
+	<key>YouHaveCoins</key>
+	<string>你有金币   </string>
+	<key>Coins</key>
+	<string>金币</string>
+	<key>Purchase</key>
+	<string>购买</string>
+	<key>Take5CoinsFor5Bombs</key>
+	<string>花费5个金币购买5个炸弹?</string>
+	<key>Take1CoinFor1Bomb</key>
+	<string>花费1个金币购买1个炸弹?</string>
+	<key>YouHave</key>
+	<string>现在你有 </string>
+	<key>BombsNow</key>
+	<string> 个炸弹</string>
+	<key>YouHaveNoCoinsToTakeBombs</key>
+	<string>你没有金币购买炸弹</string>
+	<key>Take50CoinsToUnlockThisGrade</key>
+	<string>花费50金币解锁这个级别</string>
+	<key>Success</key>
+	<string>成功</string>
+</dict>
+</plist>

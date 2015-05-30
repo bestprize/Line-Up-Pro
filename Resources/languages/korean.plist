@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Start</key>
+	<string>클릭부터</string>
+	<key>GameOver</key>
+	<string>게임이끝난</string>
+	<key>Best</key>
+	<string>최고성적   </string>
+	<key>YourScore</key>
+	<string>너의점수   </string>
+	<key>NewRecord</key>
+	<string>신기록   </string>
+	<key>Restart</key>
+	<string>클릭을다시시작</string>
+	<key>Grade</key>
+	<string>급</string>
+	<key>Music</key>
+	<string>배경 음악</string>
+	<key>Sound</key>
+	<string>음향효과</string>
+	<key>YouHaveCoins</key>
+	<string>당신은 금화   </string>
+	<key>Coins</key>
+	<string>금화</string>
+	<key>Purchase</key>
+	<string>구입</string>
+	<key>Take5CoinsFor5Bombs</key>
+	<string>5개금화구입5개폭탄을퍼부었다?</string>
+	<key>Take1CoinFor1Bomb</key>
+	<string>1개금화구입1개폭탄을퍼부었다?</string>
+	<key>YouHave</key>
+	<string>이제는당신이 </string>
+	<key>BombsNow</key>
+	<string> 개의폭탄을퍼부었다</string>
+	<key>YouHaveNoCoinsToTakeBombs</key>
+	<string>당신은금화구입폭탄을퍼부었다</string>
+	<key>Take50CoinsToUnlockThisGrade</key>
+	<string>50금화解锁이관문이다</string>
+	<key>Success</key>
+	<string>성공</string>
+</dict>
+</plist>

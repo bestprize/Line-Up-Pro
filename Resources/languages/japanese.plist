@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Start</key>
+	<string>をクリックしてから</string>
+	<key>GameOver</key>
+	<string>ゲームが終わった</string>
+	<key>Best</key>
+	<string>最高記録   </string>
+	<key>YourScore</key>
+	<string>あなたの点数   </string>
+	<key>NewRecord</key>
+	<string>新記録   </string>
+	<key>Restart</key>
+	<string>クリックが再開された</string>
+	<key>Grade</key>
+	<string>職級</string>
+	<key>Music</key>
+	<string>背景音楽</string>
+	<key>Sound</key>
+	<string>サウンド</string>
+	<key>YouHaveCoins</key>
+	<string>あなたは金貨   </string>
+	<key>Coins</key>
+	<string>金貨</string>
+	<key>Purchase</key>
+	<string>購買</string>
+	<key>Take5CoinsFor5Bombs</key>
+	<string>5つの金貨を费やして購入の5つの爆弾を浴びせた?</string>
+	<key>Take1CoinFor1Bomb</key>
+	<string>1つの金貨を费やして購入の1つの爆弾を浴びせた?</string>
+	<key>YouHave</key>
+	<string>现在、あなたは </string>
+	<key>BombsNow</key>
+	<string> 個に爆弾を浴びせた</string>
+	<key>YouHaveNoCoinsToTakeBombs</key>
+	<string>あなたは金貨購買爆弾だ</string>
+	<key>Take50CoinsToUnlockThisGrade</key>
+	<string>これを50金貨ロック関門</string>
+	<key>Success</key>
+	<string>成功</string>
+</dict>
+</plist>

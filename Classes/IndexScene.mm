@@ -230,7 +230,7 @@ void Index::showLeaderboard(Ref* pSender)
 
 void Index::love(Ref* pSender)
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/id999365832?mt=8"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/id991471880?mt=8"]];
     
 }
 

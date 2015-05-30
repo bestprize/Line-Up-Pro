@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Start</key>
+	<string>Нажмите начала</string>
+	<key>GameOver</key>
+	<string>Игра окончена</string>
+	<key>Best</key>
+	<string>Лучше достижений   </string>
+	<key>YourScore</key>
+	<string>Ты дробь   </string>
+	<key>NewRecord</key>
+	<string>Новый рекорд   </string>
+	<key>Restart</key>
+	<string>Нажмите заново</string>
+	<key>Grade</key>
+	<string>уровень</string>
+	<key>Music</key>
+	<string>Фоновая музыка</string>
+	<key>Sound</key>
+	<string>звуки</string>
+	<key>YouHaveCoins</key>
+	<string>У тебя есть золотых   </string>
+	<key>Coins</key>
+	<string>дублон</string>
+	<key>Purchase</key>
+	<string>купить</string>
+	<key>Take5CoinsFor5Bombs</key>
+	<string>Стоить 5 золотых покупать 5 бомба?</string>
+	<key>Take1CoinFor1Bomb</key>
+	<string>Стоить 1 золотых покупать 1 бомба?</string>
+	<key>YouHave</key>
+	<string>Теперь у тебя есть </string>
+	<key>BombsNow</key>
+	<string> бомба</string>
+	<key>YouHaveNoCoinsToTakeBombs</key>
+	<string>Ты не золотых покупать бомба</string>
+	<key>Take50CoinsToUnlockThisGrade</key>
+	<string>Потратить 50 золотых открыть этот контрольно-пропускные пункты</string>
+	<key>Success</key>
+	<string>успех</string>
+</dict>
+</plist>

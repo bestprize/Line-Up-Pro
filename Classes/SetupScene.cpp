@@ -183,8 +183,6 @@ void Setup::gradeButton4(CCObject * obj)
 
 void Setup::gradeButton5(CCObject * obj)
 {
-    auto gradeOnOff5 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff5",0);
-    if(gradeOnOff5 == 1){
         gradeCheckBox5->selected();
         gradeCheckBox2->unselected();
         gradeCheckBox4->unselected();
@@ -195,26 +193,10 @@ void Setup::gradeButton5(CCObject * obj)
         gradeCheckBox9->unselected();
         gradeCheckBox10->unselected();
         UserDefault::sharedUserDefault()->setIntegerForKey("grade",5);
-    } else if(gradeOnOff5 == 0){
-        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
-        FileUtils *fu = FileUtils::getInstance();
-        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
-        
-        int wealthDedu;
-        wealthDedu = 50;
-        auto pop = PopM::create();
-        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
-        pop->setContentMLink();
-        pop->setMenuM(wealthDedu,"UnlockGrade05");
-        addChild(pop,10,"pop");
-        
-    }
 }
 
 void Setup::gradeButton6(CCObject * obj)
 {
-    auto gradeOnOff6 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff6",0);
-    if(gradeOnOff6 == 1){
         gradeCheckBox6->selected();
         gradeCheckBox2->unselected();
         gradeCheckBox4->unselected();
@@ -225,26 +207,10 @@ void Setup::gradeButton6(CCObject * obj)
         gradeCheckBox9->unselected();
         gradeCheckBox10->unselected();
         UserDefault::sharedUserDefault()->setIntegerForKey("grade",6);
-    } else if(gradeOnOff6 == 0){
-        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
-        FileUtils *fu = FileUtils::getInstance();
-        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
-        
-        int wealthDedu;
-        wealthDedu = 50;
-        auto pop = PopM::create();
-        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
-        pop->setContentMLink();
-        pop->setMenuM(wealthDedu,"UnlockGrade06");
-        addChild(pop,10,"pop");
-        
-    }
 }
 
 void Setup::gradeButton7(CCObject * obj)
 {
-    auto gradeOnOff7 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff7",0);
-    if(gradeOnOff7 == 1){
         gradeCheckBox7->selected();
         gradeCheckBox2->unselected();
         gradeCheckBox4->unselected();
@@ -255,26 +221,10 @@ void Setup::gradeButton7(CCObject * obj)
         gradeCheckBox9->unselected();
         gradeCheckBox10->unselected();
         UserDefault::sharedUserDefault()->setIntegerForKey("grade",7);
-    } else if(gradeOnOff7 == 0){
-        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
-        FileUtils *fu = FileUtils::getInstance();
-        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
-        
-        int wealthDedu;
-        wealthDedu = 50;
-        auto pop = PopM::create();
-        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
-        pop->setContentMLink();
-        pop->setMenuM(wealthDedu,"UnlockGrade07");
-        addChild(pop,10,"pop");
-        
-    }
 }
 
 void Setup::gradeButton8(CCObject * obj)
 {
-    auto gradeOnOff8 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff8",0);
-    if(gradeOnOff8 == 1){
         gradeCheckBox8->selected();
         gradeCheckBox2->unselected();
         gradeCheckBox4->unselected();
@@ -285,26 +235,10 @@ void Setup::gradeButton8(CCObject * obj)
         gradeCheckBox9->unselected();
         gradeCheckBox10->unselected();
         UserDefault::sharedUserDefault()->setIntegerForKey("grade",8);
-    } else if(gradeOnOff8 == 0){
-        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
-        FileUtils *fu = FileUtils::getInstance();
-        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
-        
-        int wealthDedu;
-        wealthDedu = 50;
-        auto pop = PopM::create();
-        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
-        pop->setContentMLink();
-        pop->setMenuM(wealthDedu,"UnlockGrade08");
-        addChild(pop,10,"pop");
-        
-    }
 }
 
 void Setup::gradeButton9(CCObject * obj)
 {
-    auto gradeOnOff9 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff9",0);
-    if(gradeOnOff9 == 1){
         gradeCheckBox9->selected();
         gradeCheckBox2->unselected();
         gradeCheckBox4->unselected();
@@ -315,26 +249,10 @@ void Setup::gradeButton9(CCObject * obj)
         gradeCheckBox3->unselected();
         gradeCheckBox10->unselected();
         UserDefault::sharedUserDefault()->setIntegerForKey("grade",9);
-    } else if(gradeOnOff9 == 0){
-        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
-        FileUtils *fu = FileUtils::getInstance();
-        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
-        
-        int wealthDedu;
-        wealthDedu = 50;
-        auto pop = PopM::create();
-        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
-        pop->setContentMLink();
-        pop->setMenuM(wealthDedu,"UnlockGrade09");
-        addChild(pop,10,"pop");
-        
-    }
 }
 
 void Setup::gradeButton10(CCObject * obj)
 {
-    auto gradeOnOff10 = UserDefault::sharedUserDefault()->getIntegerForKey("gradeOnOff10",0);
-    if(gradeOnOff10 == 1){
         gradeCheckBox10->selected();
         gradeCheckBox2->unselected();
         gradeCheckBox4->unselected();
@@ -345,20 +263,6 @@ void Setup::gradeButton10(CCObject * obj)
         gradeCheckBox9->unselected();
         gradeCheckBox3->unselected();
         UserDefault::sharedUserDefault()->setIntegerForKey("grade",10);
-    } else if(gradeOnOff10 == 0){
-        string fullPlistPath = FileUtils::sharedFileUtils()->fullPathForFilename(GetCurrLanguage::getCurrLanguage());
-        FileUtils *fu = FileUtils::getInstance();
-        ValueMap vm = fu->getValueMapFromFile(fullPlistPath.c_str());
-        
-        int wealthDedu;
-        wealthDedu = 50;
-        auto pop = PopM::create();
-        pop->setContentM(vm["Take50CoinsToUnlockThisGrade"].asString().c_str(),36);
-        pop->setContentMLink();
-        pop->setMenuM(wealthDedu,"UnlockGrade10");
-        addChild(pop,10,"pop");
-        
-    }
 }
 
 void Setup::backToIndex(Ref* pSender)  
