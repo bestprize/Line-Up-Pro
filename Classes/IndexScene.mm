@@ -53,6 +53,19 @@ bool Index::init()
     }
 
     
+    struct timeval nowTimeval;
+    gettimeofday(&nowTimeval, NULL);
+    struct tm * tm;
+    time_t time_sec ;
+    time_sec = nowTimeval.tv_sec;
+    tm = localtime(&time_sec);
+    auto nowDay = tm->tm_mday;
+    int day = UserDefault::sharedUserDefault()->getIntegerForKey("day",1);
+    if(nowDay != day && UserDefault::sharedUserDefault()->getIntegerForKey("bomb",0) < 1){
+        UserDefault::sharedUserDefault()->setIntegerForKey("day",nowDay);
+        UserDefault::sharedUserDefault()->setIntegerForKey("bomb",UserDefault::sharedUserDefault()->getIntegerForKey("bomb",0)+1);
+    }
+    
     //UserDefault::sharedUserDefault()->setIntegerForKey("bomb",50000);
 	isNewScene = true;
 	picSpeedMin = 1.0f;

@@ -1425,7 +1425,7 @@ void MainLineUpLayer::createGameOverLayer(){
 
 void MainLineUpLayer::gameOver(){
     
-        [(AppController*)[UIApplication sharedApplication].delegate showInterstitial];
+//        [(AppController*)[UIApplication sharedApplication].delegate showInterstitial];
     
         Director::getInstance()->getEventDispatcher()->removeAllEventListeners();
     
