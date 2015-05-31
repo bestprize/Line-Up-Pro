@@ -1066,7 +1066,7 @@
 					/Users/bestprize/Documents/ws_cocos2dx/LineUpPro/classes,
 					"/Users/bestprize/Downloads/GoogleMobileAdsSdkiOS-7.2.1/GoogleMobileAds.framework/Versions/A",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
