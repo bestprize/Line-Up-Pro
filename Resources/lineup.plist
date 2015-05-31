@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>APPName</key>
+	<string>成语先锋</string>
+	<key>Level</key>
+	<string>级别设置</string>
+	<key>Grade</key>
+	<string>难度设置</string>
+	<key>Right</key>
+	<string>正确</string>
+	<key>NotRight</key>
+	<string>不正确</string>
+	<key>Continue</key>
+	<string>继续游戏</string>
+	<key>Return</key>
+	<string>返回</string>
+	<key>Enter</key>
+	<string>确定</string>
+	<key>Tip</key>
+	<string>提示正确答案中的一个字，需要花费汉语博大精深币：</string>
+	<key>Answer</key>
+	<string>显示正确答案，需要花费汉语博大精深币：</string>
+	<key>Skip</key>
+	<string>跳过这一关，需要花费汉语博大精深币：</string>
+	<key>CoinsNotEnough</key>
+	<string>您的汉语博大精深币不足！</string>
+	<key>SetupSkip</key>
+	<string>此处重新设置游戏，需要花费汉语博大精深币：</string>
+	<key>Level1</key>
+	<string>初级</string>
+	<key>Level2</key>
+	<string>中级</string>
+	<key>Level3</key>
+	<string>高级</string>
+	<key>Grade3</key>
+	<string>3</string>
+	<key>Grade4</key>
+	<string>4</string>
+	<key>Grade5</key>
+	<string>5</string>
+	<key>Grade6</key>
+	<string>6</string>
+	<key>Grade7</key>
+	<string>7</string>
+	<key>Grade8</key>
+	<string>8</string>
+	<key>Grade9</key>
+	<string>9</string>
+	<key>Grade10</key>
+	<string>10</string>
+	<key>1000coins</key>
+	<string>汉语博大精深币</string>
+	<key>10000coins</key>
+	<string>汉语博大精深币</string>
+	<key>1000coinsPrice</key>
+	<string>价格:¥1.00</string>
+	<key>10000coinsPrice</key>
+	<string>价格:¥6.00</string>
+	<key>Perchase</key>
+	<string>购买</string>
+</dict>
+</plist>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Start</key>
+	<string>klicken Sie auf Start</string>
+	<key>GameOver</key>
+	<string>Spiel vorbei</string>
+	<key>Best</key>
+	<string>bests   </string>
+	<key>YourScore</key>
+	<string>Ihr Ergebnis   </string>
+	<key>NewRecord</key>
+	<string>neuer Rekord   </string>
+	<key>Restart</key>
+	<string>Klicken, um neu zu starten</string>
+	<key>Grade</key>
+	<string>Höhe</string>
+	<key>Music</key>
+	<string>Hintergrundmusik</string>
+	<key>Sound</key>
+	<string>klingen</string>
+	<key>YouHaveCoins</key>
+	<string>Sie haben Münzen   </string>
+	<key>Coins</key>
+	<string>Münzen</string>
+	<key>Purchase</key>
+	<string>Kauf</string>
+	<key>Take5CoinsFor5Bombs</key>
+	<string>Verbrachte 5 Münzen zu 5 Bomben kaufen?</string>
+	<key>Take1CoinFor1Bomb</key>
+	<string>Verbrachte 1 Münzen zu 1 Bomben kaufen?</string>
+	<key>YouHave</key>
+	<string>Jetzt können </string>
+	<key>BombsNow</key>
+	<string> Bombe haben</string>
+	<key>YouHaveNoCoinsToTakeBombs</key>
+	<string>Sie haben keine Münzen, um Bomben zu kaufen</string>
+	<key>Take50CoinsToUnlockThisGrade</key>
+	<string>Verbrachte 50 Münzen öffnen Diese Höhe</string>
+	<key>Success</key>
+	<string>Erfolg</string>
+</dict>
+</plist>
